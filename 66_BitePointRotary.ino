@@ -1,4 +1,4 @@
-void rotaryAnalog(int analogPin, int switchNumber, int fieldPlacement, int hybridPositions, int pos1, int pos2, int pos3, int pos4, int pos5, int pos6, int pos7, int pos8, int pos9, int pos10, int pos11, int pos12)
+void rotaryLeft(int analogPin, int switchNumber, int fieldPlacement, int pos1, int pos2, int pos3, int pos4, int pos5, int pos6, int pos7, int pos8, int pos9, int pos10, int pos11, int pos12, bool reverse)
 {
     int Pin = analogPin;
     int Pos1 = pos1;
@@ -14,13 +14,14 @@ void rotaryAnalog(int analogPin, int switchNumber, int fieldPlacement, int hybri
     int Pos11 = pos11;
     int Pos12 = pos12;
 
+    bool Reverse = reverse;
+
     int N = switchNumber - 1;
 
     int Number = analogButtonNumber[N];
     int FieldPlacement = fieldPlacement;
-    int HyPos = hybridPositions;
 
-    int maxPos = max(12, HyPos);
+    int maxPos = 12;
 
 
     int value = analogRead(Pin);
@@ -40,6 +41,11 @@ void rotaryAnalog(int analogPin, int switchNumber, int fieldPlacement, int hybri
 
     result--;
 
+    if (Reverse)
+    {
+        result = 11 - result;
+    }
+
     //Short debouncer on switch rotation
 
     if (analogLastCounter[N] != result)
@@ -50,6 +56,20 @@ void rotaryAnalog(int analogPin, int switchNumber, int fieldPlacement, int hybri
         }
         else if (globalClock - analogTimer1[N] > analogWait)
         {
+
+            //----------------------------------------------
+            //----------------BITE POINT SETTING------------
+            //----------------------------------------------
+
+
+            if (pushState[biteButtonRow - 1][biteButtonCol - 1] == 1)
+            {
+                if (!biteButtonBit1 && !biteButtonBit2)
+                {
+                    biteButtonBit1 = true;
+                }
+            }
+
             //----------------------------------------------
             //----------------MODE CHANGE-------------------
             //----------------------------------------------
@@ -57,35 +77,14 @@ void rotaryAnalog(int analogPin, int switchNumber, int fieldPlacement, int hybri
             //Due to placement of this scope, mode change will only occur on switch rotation.
             //If you want to avoid switching mode, set fieldPlacement to 0.
 
-            if (pushState[modButtonRow - 1][modButtonCol - 1] == 1 && FieldPlacement != 0)
+            else if (pushState[modButtonRow - 1][modButtonCol - 1] == 1 && FieldPlacement != 0)
             {
                 for (int i = 0; i < maxPos + 1; i++) //Remove the remnants from SWITCH MODE 1
                 {
                     Joystick.releaseButton(i - 1 + Number);
                 }
 
-                if (analogSwitchMode1[N] && analogSwitchMode2[N]) //EXIT from switch mode 4
-                {
-                    analogSwitchMode2[N] = false;
-                    analogSwitchMode1[N] = false;
-                }
-                else //Rotate between switch modes 1-3
-                {
-                    analogSwitchMode1[N] = !analogSwitchMode1[N];
-                    if (!analogSwitchMode1[N]) //Moving into hybrid mode, set hybrid button to 0
-                    {
-                        analogSwitchMode2[N] = true;
-                        latchState[hybridButtonRow - 1][hybridButtonCol - 1] = 0;
-                    }
-                    else
-                    {
-                        if (analogSwitchMode2[N])
-                        {
-                            analogSwitchMode2[N] = false;
-                            analogSwitchMode1[N] = false;
-                        }
-                    }
-                }
+                analogSwitchMode1[N] = !analogSwitchMode1[N]; //SWAP MODE
             }
 
             //Engage encoder pulse timer
@@ -97,40 +96,51 @@ void rotaryAnalog(int analogPin, int switchNumber, int fieldPlacement, int hybri
             //Give new value to pushState
             analogLastCounter[N] = result;
 
-            //If we're in open hybrid, change counter
-            if (!analogSwitchMode1[N] && analogSwitchMode2[N])
-            {
-                if ((analogTempState[N] > 0 && analogTempState[N] < 5) || analogTempState[N] < -5)
-                {
-                    analogRotaryCount[N] ++;
-                }
-                else
-                {
-                    analogRotaryCount[N] --;
-                }
-                if (analogRotaryCount[N] < 0)
-                {
-                    analogRotaryCount[N] = HyPos - 1;
-                }
-            }
 
-            //If we're not in hybrid at all, reset counter
-            else if (!analogSwitchMode2[N])
+            if (biteButtonBit1 || biteButtonBit2) //Bite point setting
             {
-                analogRotaryCount[N] = 0;
+                //Adjusting bite up/down
+
+                uint8_t biteRes = result + 1;
+
+                if (biteRes > 10)
+                {
+                    biteRes = 0;
+                }
+
+                if (biteButtonBit1 && !biteButtonBit2)
+                {
+                    bitePoint = biteRes * 100;
+                    first = biteRes;
+                    if (bitePoint > 1000)
+                    {
+                        bitePoint = 1000;
+                    }
+                }
+                else if (!biteButtonBit1 && biteButtonBit2)
+                {
+                    bitePoint = first * 100 + biteRes * 10;
+                    second = biteRes;
+                    if (bitePoint > 1000)
+                    {
+                        bitePoint = 1000;
+                    }
+                }
+                else if (biteButtonBit1 && biteButtonBit2)
+                {
+                    bitePoint = first * 100 + second * 10 + biteRes;
+                    if (bitePoint > 1000)
+                    {
+                        bitePoint = 1000;
+                    }
+                }
             }
         }
     }
 
-    //If we're in hybrid, able to set open/closed hybrid
-    if (analogSwitchMode2[N])
-    {
-        analogSwitchMode1[N] = latchState[hybridButtonRow - 1][hybridButtonCol - 1];
-    }
-
     //SWITCH MODE 1: 12 - position switch
 
-    if (!analogSwitchMode1[N] && !analogSwitchMode2[N])
+    if (!analogSwitchMode1[N] && !biteButtonBit1 && !biteButtonBit2)
     {
         analogTempState[N] = 0; //Refreshing encoder mode difference
 
@@ -147,9 +157,9 @@ void rotaryAnalog(int analogPin, int switchNumber, int fieldPlacement, int hybri
         }
     }
 
-    //SWITCH MODE 2/4: Incremental encoder or closed hybrid
+    //SWITCH MODE 2: Incremental switch
 
-    else if (analogSwitchMode1[N])
+    else if (analogSwitchMode1[N] && !biteButtonBit1 && !biteButtonBit2)
     {
         Number = analogButtonNumberIncMode[N];
         int difference = analogTempState[N];
@@ -177,35 +187,10 @@ void rotaryAnalog(int analogPin, int switchNumber, int fieldPlacement, int hybri
         }
     }
 
-    //SWITCH MODE 3: OPEN HYBRID
-    if (!analogSwitchMode1[N] && analogSwitchMode2[N])
-    {
-
-        for (int i = 1; i < HyPos + 1; i++)
-        {
-            int e = analogRotaryCount[N] % HyPos;
-            if (e == 0)
-            {
-                e = HyPos;
-            }
-            if (i == e)
-            {
-                Joystick.pressButton(i - 1 + Number);
-            }
-            else
-            {
-                Joystick.releaseButton(i - 1 + Number);
-            }
-        }
-    }
-
     //Push switch mode
     long push = 0;
     push = push | analogSwitchMode1[N];
-    push = push | (analogSwitchMode2[N] << 1);
     push = push << (2 * (FieldPlacement - 1));
     encoderField = encoderField | push;
 }
-
-
 

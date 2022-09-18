@@ -105,13 +105,13 @@ typedef void *__builtin_va_list;
 #include "52_FunctionButtons.ino"
 #include "54_PushPull.ino"
 #include "62_Rotary2Bit.ino"
-#include "65_RotaryAnalog.ino"
+#include "66_BitePointRotary.ino"
+#include "67_PresetRotary.ino"
 #include "70_FunkyPush.ino"
 #include "71_FunkyRotary.ino"
 #include "72_FunkyButton.ino"
 #include "73_FunkyDDS.ino"
 #include "91_DualClutch.ino"
 #include "93_BrakeMagic.ino"
-#include "98_PresetSwitch.ino"
 #endif
 #endif

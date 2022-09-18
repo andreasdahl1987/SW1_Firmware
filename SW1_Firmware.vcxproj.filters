@@ -27,15 +27,15 @@
     <None Include="51_Toggle.ino" />
     <None Include="52_FunctionButtons.ino" />
     <None Include="62_Rotary2Bit.ino" />
-    <None Include="65_RotaryAnalog.ino" />
     <None Include="70_FunkyPush.ino" />
     <None Include="71_FunkyRotary.ino" />
     <None Include="72_FunkyButton.ino" />
     <None Include="73_FunkyDDS.ino" />
     <None Include="91_DualClutch.ino" />
-    <None Include="98_PresetSwitch.ino" />
     <None Include="54_PushPull.ino" />
     <None Include="93_BrakeMagic.ino" />
+    <None Include="67_PresetRotary.ino" />
+    <None Include="66_BitePointRotary.ino" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="__vm\.SW1_Firmware.vsarduino.h">
