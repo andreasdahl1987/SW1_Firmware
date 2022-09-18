@@ -103,6 +103,7 @@ typedef void *__builtin_va_list;
 #include "50_Pushbuttons.ino"
 #include "51_Toggle.ino"
 #include "52_FunctionButtons.ino"
+#include "54_PushPull.ino"
 #include "62_Rotary2Bit.ino"
 #include "65_RotaryAnalog.ino"
 #include "70_FunkyPush.ino"

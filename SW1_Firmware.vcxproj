@@ -112,6 +112,7 @@
     <None Include="50_Pushbuttons.ino" />
     <None Include="51_Toggle.ino" />
     <None Include="52_FunctionButtons.ino" />
+    <None Include="54_PushPull.ino" />
     <None Include="62_Rotary2Bit.ino" />
     <None Include="65_RotaryAnalog.ino" />
     <None Include="70_FunkyPush.ino" />

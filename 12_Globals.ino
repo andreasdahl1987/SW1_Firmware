@@ -2,6 +2,12 @@
 //--------OTHER VARIABLES-------
 //------------------------------
 
+//Handbrake
+bool handbrake = false;
+bool handbrakeLock = false;
+bool handbrakeRelease = false;
+long handbrakeTimer = 0;
+
 //Function buttons
 int8_t hybridButtonRow;
 int8_t hybridButtonCol;

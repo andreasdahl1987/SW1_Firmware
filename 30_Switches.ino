@@ -26,18 +26,18 @@ void loop()
     pushButton(1, 6);
     pushButton(3, 1);
     pushButton(3, 2);
-    pushButton(3, 3);
-    pushButtonM(3, 4, 4);
+
     pushButton(4, 3);
     pushButton(4, 4);
     pushButton(4, 6);
     pushButton(4, 7);
     pushButton(6, 4);
-    pushButtonM(6, 5, 5);
-    pushButton(6, 6);
+
     pushButton(6, 7);
     pushButton(7, 1);
     pushButton(7, 3);
+
+    pushPull(3, 3, 3, 4, 6, 6, 6, 5, 7);
 
     toggleM(3, 5, 1);
     toggleM(6, 3, 2);
