@@ -4,6 +4,7 @@
 
 void setup()
 {
+
     //Set up joystick axis
     Joystick.setXAxisRange(0, 1000);
     Joystick.setThrottleRange(0, 1000);
@@ -44,8 +45,6 @@ void setup()
             readings[u][i] = 0;
         }
     }
-
-
 
     //Ready the matrix
 
