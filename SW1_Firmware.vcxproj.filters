@@ -35,6 +35,7 @@
     <None Include="91_DualClutch.ino" />
     <None Include="98_PresetSwitch.ino" />
     <None Include="54_PushPull.ino" />
+    <None Include="93_BrakeMagic.ino" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="__vm\.SW1_Firmware.vsarduino.h">

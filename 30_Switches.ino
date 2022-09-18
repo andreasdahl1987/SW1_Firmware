@@ -39,9 +39,9 @@ void loop()
 
     pushPull(3, 3, 3, 4, 6, 6, 6, 5, 7);
 
-    toggleM(3, 5, 1);
-    toggleM(6, 3, 2);
-    toggleM(7, 2, 3);
+    toggleM(3, 5, 5);
+    toggleM(6, 3, 6);
+    brakeMagic(7, 2, 4);
 
     //SPECIALS
 
@@ -52,8 +52,8 @@ void loop()
 
     //ENCODERS
 
-    rotary2Inc(1, 1, true);
-    rotary2Inc(4, 1, true);
+    rotary2Inc(1, 1, false);
+    rotary2Inc(4, 1, false);
 
     rotary2Inc(3, 6, true);
     rotary2Inc(6, 1, false);

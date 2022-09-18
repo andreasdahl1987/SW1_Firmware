@@ -8,6 +8,9 @@ bool handbrakeLock = false;
 bool handbrakeRelease = false;
 long handbrakeTimer = 0;
 
+//Brake magic
+float brakeMagicValue = 50; //Default brake magic value
+
 //Function buttons
 int8_t hybridButtonRow;
 int8_t hybridButtonCol;

@@ -120,6 +120,7 @@
     <None Include="72_FunkyButton.ino" />
     <None Include="73_FunkyDDS.ino" />
     <None Include="91_DualClutch.ino" />
+    <None Include="93_BrakeMagic.ino" />
     <None Include="98_PresetSwitch.ino" />
     <None Include="SW1_Firmware.ino" />
   </ItemGroup>
