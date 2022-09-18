@@ -95,11 +95,11 @@ void loop()
 
     dualClutch(
         A2,                                                           //Analog pin to read (Master)
-        4,                                                            //Analog switch # (Master)
+        3,                                                            //Analog switch # (Master)
         571,                                                          //Released value (Master
         169,                                                          //Fully pressed value (Master)
         A5,                                                           //Analog pin to read (Slave)
-        6,                                                            //Analog switch # (Slave)
+        4,                                                            //Analog switch # (Slave)
         527,                                                          //Released value (Slave)
         882,                                                          //Fully pressed value (Slave)
         true);                                                        //True = Master/Slave paddle is Throttle/Brake in mode 4. False is opposite.
