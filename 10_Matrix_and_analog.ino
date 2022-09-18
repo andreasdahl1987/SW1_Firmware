@@ -39,14 +39,14 @@ bool switchMode[rowCount][colCount] = //BOOT PRESET
 //--------ANALOG DESCRIPTION-------------
 //---------------------------------------
 
-const uint8_t analogButtonNumber[10] =         //ANALOG BUTTONS 1
-{ 69, 81, 0, 0, 0, 0, 0, 0, 0, 0 };
+const uint8_t analogButtonNumber[4] =         //ANALOG BUTTONS 1
+{ 69, 81, 0, 0 };
 
-const uint8_t analogButtonNumberIncMode[10] =  //ANALOG BUTTONS 2
-{ 69, 81, 0, 0, 0, 0, 0, 0, 0, 0 };
+const uint8_t analogButtonNumberIncMode[4] =  //ANALOG BUTTONS 2
+{ 69, 81, 0, 0 };
 
-int8_t analogSwitchMode1[10] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }; //BOOT PRESET
-int8_t analogSwitchMode2[10] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+int8_t analogSwitchMode1[4] = { 0, 0, 0, 0 }; //BOOT PRESET
+int8_t analogSwitchMode2[4] = { 0, 0, 0, 0 };
 
 //---------------------------------------
 //--------------PRESETS------------------

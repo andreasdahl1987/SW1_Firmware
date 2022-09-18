@@ -10,12 +10,12 @@ long toggleTimer[rowCount][colCount];
 
 //Analog variables
 
-int8_t analogLastCounter[10];
-int8_t analogTempState[10];
-bool analogLatchLock[10];
-long analogTimer1[10];
-long analogTimer2[10];
-int8_t analogRotaryCount[10];
+int8_t analogLastCounter[4];
+int8_t analogTempState[4];
+bool analogLatchLock[4];
+long analogTimer1[4];
+long analogTimer2[4];
+int8_t analogRotaryCount[4];
 
 #define clutchTopDeadzone 10
 #define clutchBottomDeadzone 10
@@ -23,7 +23,7 @@ int8_t analogRotaryCount[10];
 //Smoothing of analog signal
 
 #define reads 10
-int readings[10][reads];         // the readings from the analog input
-int8_t readIndex[10];              // the index of the current reading
-int total[10];                  // the running total
-int average[10];
+int readings[4][reads];         // the readings from the analog input
+int8_t readIndex[4];              // the index of the current reading
+int total[4];                  // the running total
+int average[4];

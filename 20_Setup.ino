@@ -25,7 +25,7 @@ void setup()
         }
     }
 
-    for (int u = 0; u < 10; u++)
+    for (int u = 0; u < 4; u++)
     {
         analogLastCounter[u] = 0;
         analogTempState[u] = 0;
