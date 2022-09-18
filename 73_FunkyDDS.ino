@@ -39,59 +39,25 @@ void DDSfunky(int Arow, int Acol, int Bcol) {
         {
             switchTimer[Row][Column] = globalClock;
 
-            if (pushState[biteButtonRow - 1][biteButtonCol - 1] && !biteButtonBit1 && !biteButtonBit2) //Engage in bite mode
+            if (!toggleTimer[Row][bCol] == 1)
             {
-                biteButtonBit1 = true;
+                toggleTimer[Row][Column] --; //Counter for position switch
             }
-            else if (!(!biteButtonBit1 && !biteButtonBit2)) //If we're in bite mode
+            switchModeLock[Row][bCol] = !switchModeLock[Row][bCol]; //For MODE 4
+            if (pushState[modButtonRow - 1][modButtonCol - 1] == 1) //MODE CHANGE
             {
-                if (biteButtonBit1 && !biteButtonBit2)
+                for (int i = 0; i < 24; i++) //Reset all buttons
                 {
-                    bitePoint = bitePoint - 100;
-                    if (bitePoint < 0)
-                    {
-                        bitePoint = 1000;
-                    }
+                    Joystick.releaseButton(i + buttonNumber[Row][Column]);
                 }
-                else if (!biteButtonBit1 && biteButtonBit2)
+                Joystick.releaseButton(buttonNumber[Row][bCol]);
+                Joystick.releaseButton(1 + buttonNumber[Row][bCol]);
+                latchLock[ddButtonRow - 1][ddButtonCol - 1] = false; //Reset DDButton
+                latchState[ddButtonRow - 1][ddButtonCol - 1] = false;
+                toggleTimer[Row][bCol] --; //Mode counter
+                if (toggleTimer[Row][bCol] == 1) //Skipping closed DDS mode
                 {
-                    bitePoint = bitePoint - 10;
-                    if (bitePoint < 0)
-                    {
-                        bitePoint = 1000;
-                    }
-                }
-                else if (biteButtonBit1 && biteButtonBit2)
-                {
-                    bitePoint = bitePoint - 1;
-                    if (bitePoint < 0)
-                    {
-                        bitePoint = 1000;
-                    }
-                }
-            }
-            else
-            {
-                if (!toggleTimer[Row][bCol] == 1)
-                {
-                    toggleTimer[Row][Column] --; //Counter for position switch
-                }
-                switchModeLock[Row][bCol] = !switchModeLock[Row][bCol]; //For MODE 4
-                if (pushState[modButtonRow - 1][modButtonCol - 1] == 1) //MODE CHANGE
-                {
-                    for (int i = 0; i < 24; i++) //Reset all buttons
-                    {
-                        Joystick.releaseButton(i + buttonNumber[Row][Column]);
-                    }
-                    Joystick.releaseButton(buttonNumber[Row][bCol]);
-                    Joystick.releaseButton(1 + buttonNumber[Row][bCol]);
-                    latchLock[ddButtonRow - 1][ddButtonCol - 1] = false; //Reset DDButton
-                    latchState[ddButtonRow - 1][ddButtonCol - 1] = false;
-                    toggleTimer[Row][bCol] --; //Mode counter
-                    if (toggleTimer[Row][bCol] == 1) //Skipping closed DDS mode
-                    {
-                        toggleTimer[Row][bCol] = 0;
-                    }
+                    toggleTimer[Row][bCol] = 0;
                 }
             }
         }
@@ -100,71 +66,25 @@ void DDSfunky(int Arow, int Acol, int Bcol) {
         {
             switchTimer[Row][bCol] = globalClock;
 
-            if (pushState[biteButtonRow - 1][biteButtonCol - 1] && !biteButtonBit1 && !biteButtonBit2) //Engage in bite mode
+            if (!toggleTimer[Row][bCol] == 1)
             {
-                biteButtonBit1 = true;
+                toggleTimer[Row][Column] ++;
             }
-            else if (!(!biteButtonBit1 && !biteButtonBit2)) //If we're in bite mode
+            switchModeLock[Row][Column] = !switchModeLock[Row][Column]; //For MODE 4
+            if (pushState[modButtonRow - 1][modButtonCol - 1] == 1) //MODE CHANGE
             {
-                if (biteButtonBit1 && !biteButtonBit2)
+                for (int i = 0; i < 24; i++) //Reset all buttons
                 {
-                    bitePoint = bitePoint + 100;
-                    if (bitePoint > 1000)
-                    {
-                        bitePoint = 1000;
-                    }
-                    else if (bitePoint == 1000)
-                    {
-                        bitePoint = 0;
-                    }
+                    Joystick.releaseButton(i + buttonNumber[Row][Column]);
                 }
-                else if (!biteButtonBit1 && biteButtonBit2)
+                Joystick.releaseButton(buttonNumber[Row][bCol]);
+                Joystick.releaseButton(1 + buttonNumber[Row][bCol]);
+                latchLock[ddButtonRow - 1][ddButtonCol - 1] = false; //Reset DDButton
+                latchState[ddButtonRow - 1][ddButtonCol - 1] = false;
+                toggleTimer[Row][bCol] ++; //Mode counter
+                if (toggleTimer[Row][bCol] == 1) //Skipping closed DDS mode
                 {
-                    bitePoint = bitePoint + 10;
-                    if (bitePoint > 1000)
-                    {
-                        bitePoint = 1000;
-                    }
-                    else if (bitePoint == 1000)
-                    {
-                        bitePoint = 0;
-                    }
-                }
-                else if (biteButtonBit1 && biteButtonBit2)
-                {
-                    bitePoint = bitePoint + 1;
-                    if (bitePoint > 1000)
-                    {
-                        bitePoint = 1000;
-                    }
-                    else if (bitePoint == 1000)
-                    {
-                        bitePoint = 0;
-                    }
-                }
-            }
-            else
-            {
-                if (!toggleTimer[Row][bCol] == 1)
-                {
-                    toggleTimer[Row][Column] ++;
-                }
-                switchModeLock[Row][Column] = !switchModeLock[Row][Column]; //For MODE 4
-                if (pushState[modButtonRow - 1][modButtonCol - 1] == 1) //MODE CHANGE
-                {
-                    for (int i = 0; i < 24; i++) //Reset all buttons
-                    {
-                        Joystick.releaseButton(i + buttonNumber[Row][Column]);
-                    }
-                    Joystick.releaseButton(buttonNumber[Row][bCol]);
-                    Joystick.releaseButton(1 + buttonNumber[Row][bCol]);
-                    latchLock[ddButtonRow - 1][ddButtonCol - 1] = false; //Reset DDButton
-                    latchState[ddButtonRow - 1][ddButtonCol - 1] = false;
-                    toggleTimer[Row][bCol] ++; //Mode counter
-                    if (toggleTimer[Row][bCol] == 1) //Skipping closed DDS mode
-                    {
-                        toggleTimer[Row][bCol] = 2;
-                    }
+                    toggleTimer[Row][bCol] = 2;
                 }
             }
         }

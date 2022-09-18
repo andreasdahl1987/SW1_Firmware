@@ -22,7 +22,7 @@ int8_t analogRotaryCount[4];
 
 //Smoothing of analog signal
 
-#define reads 10
+#define reads 4
 int readings[4][reads];         // the readings from the analog input
 int8_t readIndex[4];              // the index of the current reading
 int total[4];                  // the running total

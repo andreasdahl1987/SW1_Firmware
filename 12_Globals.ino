@@ -22,6 +22,8 @@ int8_t neutralButtonRow;
 int8_t neutralButtonCol;
 int8_t biteButtonRow;
 int8_t biteButtonCol;
+int8_t presetButtonRow;
+int8_t presetButtonCol;
 
 bool biteButtonBit1 = false;
 bool biteButtonBit2 = false;

@@ -23,7 +23,7 @@ void loop()
 
     pushButton(1, 3);
     pushButton(1, 4);
-    pushButton(1, 6);
+
     pushButton(3, 1);
     pushButton(3, 2);
 
@@ -31,9 +31,10 @@ void loop()
     pushButton(4, 4);
     pushButton(4, 6);
     pushButton(4, 7);
-    pushButton(6, 4);
 
+    pushButton(6, 4);
     pushButton(6, 7);
+
     pushButton(7, 1);
     pushButton(7, 3);
 
@@ -48,6 +49,7 @@ void loop()
     modButton(1, 3);
     neutralButton(4, 5);
     biteButton(1, 5);
+    presetButton(1, 6);
 
 
     //ENCODERS
