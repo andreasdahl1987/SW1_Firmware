@@ -207,7 +207,7 @@ void rotaryAnalog(int analogPin, int switchNumber, int fieldPlacement, int hybri
     encoderField = encoderField | push;
 }
 
-void rotaryAnalog2Mode(int analogPin, int switchNumber, int fieldPlacement, int pos1, int pos2, int pos3, int pos4, int pos5, int pos6, int pos7, int pos8, int pos9, int pos10, int pos11, int pos12, bool reverse)
+void rotaryLeft(int analogPin, int switchNumber, int fieldPlacement, int pos1, int pos2, int pos3, int pos4, int pos5, int pos6, int pos7, int pos8, int pos9, int pos10, int pos11, int pos12, bool reverse)
 {
     int Pin = analogPin;
     int Pos1 = pos1;
@@ -320,58 +320,38 @@ void rotaryAnalog2Mode(int analogPin, int switchNumber, int fieldPlacement, int 
                 analogLastCounter[N] = result;
 
                 //Adjusting bite up/down
-                if ((analogTempState[N] > 0 && analogTempState[N] < 5) || analogTempState[N] < -5)
+  
+                uint8_t biteRes = result+1;
+
+                if (biteRes > 10)
                 {
-                    if (biteButtonBit1 && !biteButtonBit2)
+                    biteRes = 0;
+                }
+
+                if (biteButtonBit1 && !biteButtonBit2)
+                {
+                    bitePoint = biteRes * 100;
+                    first = biteRes;
+                    if (bitePoint > 1000)
                     {
-                        bitePoint = bitePoint + 100;
-                        if (bitePoint > 1000)
-                        {
-                            bitePoint = 1000;
-                        }
-                    }
-                    else if (!biteButtonBit1 && biteButtonBit2)
-                    {
-                        bitePoint = bitePoint + 10;
-                        if (bitePoint > 1000)
-                        {
-                            bitePoint = 1000;
-                        }
-                    }
-                    else if (biteButtonBit1 && biteButtonBit2)
-                    {
-                        bitePoint = bitePoint + 1;
-                        if (bitePoint > 1000)
-                        {
-                            bitePoint = 1000;
-                        }
+                        bitePoint = 1000;
                     }
                 }
-                else
+                else if (!biteButtonBit1 && biteButtonBit2)
                 {
-                    if (biteButtonBit1 && !biteButtonBit2)
+                    bitePoint = first * 100 + biteRes * 10;
+                    second = biteRes;
+                    if (bitePoint > 1000)
                     {
-                        bitePoint = bitePoint - 100;
-                        if (bitePoint < 0)
-                        {
-                            bitePoint = 0;
-                        }
+                        bitePoint = 1000;
                     }
-                    else if (!biteButtonBit1 && biteButtonBit2)
+                }
+                else if (biteButtonBit1 && biteButtonBit2)
+                {
+                    bitePoint = first * 100 + second * 10 + biteRes;
+                    if (bitePoint > 1000)
                     {
-                        bitePoint = bitePoint - 10;
-                        if (bitePoint < 0)
-                        {
-                            bitePoint = 0;
-                        }
-                    }
-                    else if (biteButtonBit1 && biteButtonBit2)
-                    {
-                        bitePoint = bitePoint - 1;
-                        if (bitePoint < 0)
-                        {
-                            bitePoint = 0;
-                        }
+                        bitePoint = 1000;
                     }
                 }
             }
