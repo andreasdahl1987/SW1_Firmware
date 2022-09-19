@@ -194,7 +194,7 @@ void rotaryLeft(int analogPin, int switchNumber, int fieldPlacement, int pos1, i
     //Push switch mode
     long push = 0;
     push = push | analogSwitchMode1[N];
-    push = push << (2 * (FieldPlacement - 1));
-    encoderField = encoderField | push;
+    push = push << (FieldPlacement - 1);
+    buttonField = buttonField | push;
 }
 

@@ -84,7 +84,7 @@ void loop()
     rotaryLeft(
         A3,                                                           //Analog pin to read
         1,                                                            //Analog switch #
-        1,                                                            //Field placement
+        3,                                                            //Field placement
         16, 107, 200, 291, 383, 474, 566, 657, 749, 841, 932, 1023,   //Switch position values
         false);                                                        //Rotation direction
 
