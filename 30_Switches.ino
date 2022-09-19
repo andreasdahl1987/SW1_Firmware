@@ -116,7 +116,4 @@ void loop()
     Joystick.setYAxis(buttonField - 32767);
 
     Joystick.sendState();
-
-    Serial.println(buttonField);
-    Serial.println(quickSwitchState);
 }

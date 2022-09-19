@@ -4,8 +4,6 @@
 
 void setup()
 {
-
-    Serial.print(9600);
     //Set up joystick axis
     Joystick.setXAxisRange(0, 1000);
     Joystick.setThrottleRange(0, 1000);
