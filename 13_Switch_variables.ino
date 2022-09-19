@@ -7,6 +7,7 @@ bool latchState[rowCount][colCount];
 bool switchModeLock[rowCount][colCount];
 long switchTimer[rowCount][colCount];
 long toggleTimer[rowCount][colCount];
+bool switchMode[rowCount][colCount];
 
 //Analog variables
 
@@ -16,6 +17,8 @@ bool analogLatchLock[4];
 long analogTimer1[4];
 long analogTimer2[4];
 int8_t analogRotaryCount[4];
+int8_t analogSwitchMode1[4];
+int8_t analogSwitchMode2[4];
 
 #define clutchTopDeadzone 10
 #define clutchBottomDeadzone 10

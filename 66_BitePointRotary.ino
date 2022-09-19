@@ -23,7 +23,6 @@ void rotaryLeft(int analogPin, int switchNumber, int fieldPlacement, int pos1, i
 
     int maxPos = 12;
 
-
     int value = analogRead(Pin);
 
     int positions[12] = { Pos1, Pos2, Pos3, Pos4, Pos5, Pos6, Pos7, Pos8, Pos9, Pos10, Pos11, Pos12 };

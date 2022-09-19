@@ -36,6 +36,7 @@
     <None Include="93_BrakeMagic.ino" />
     <None Include="67_PresetRotary.ino" />
     <None Include="66_BitePointRotary.ino" />
+    <None Include="41_Presets.ino" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="__vm\.SW1_Firmware.vsarduino.h">

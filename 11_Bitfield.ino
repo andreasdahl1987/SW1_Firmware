@@ -33,7 +33,7 @@ int buttonField = 0;
  16 - Neutral active
  15 - Neutral mode
  14 - Presets 4rd bit
- 13 - Presetes 3nd bit
+ 13 - Presets 3nd bit
  12 - Presets 2st bit
  11 - Presets 1st bit
  10 - Magic active

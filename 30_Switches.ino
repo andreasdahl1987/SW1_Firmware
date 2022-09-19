@@ -106,6 +106,11 @@ void loop()
         882,                                                          //Fully pressed value (Slave)
         true);                                                        //True = Master/Slave paddle is Throttle/Brake in mode 4. False is opposite.
 
+    
+    //Push the preset number
+    long push = 0;
+    push = push | (switchPreset << 10);
+    buttonField = buttonField | push;
 
     Joystick.setZAxis(encoderField - 32767);
     Joystick.setYAxis(buttonField - 32767);

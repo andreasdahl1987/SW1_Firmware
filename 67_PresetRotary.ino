@@ -46,6 +46,13 @@ void rotaryRight(int analogPin, int switchNumber, int fieldPlacement, int pos1, 
         result = 11 - result;
     }
 
+    if (bootPreset) //Load boot preset on startup
+    {
+        switchPreset = result;
+        presets(switchPreset);
+        bootPreset = false;
+    }
+
     //Short debouncer on switch rotation
 
     if (analogLastCounter[N] != result)
@@ -88,63 +95,8 @@ void rotaryRight(int analogPin, int switchNumber, int fieldPlacement, int pos1, 
                 //Set the preset value
                 switchPreset = result;
 
-                //Push the preset value
-                long push = 0;
-                push = push | (switchPreset << 10);
-                buttonField = buttonField | push;
-
-                //Clear all switch modes
-                for (int i = 0; i < rowCount; i++)
-                {
-                    for (int a = 0; a < colCount; a++)
-                    {
-                        switchMode[i][a] = 0;
-                    }
-                }
-
-                for (int i = 0; i < 4; i++)
-                {
-                    analogSwitchMode1[i] = 0;
-                    analogSwitchMode2[i] = 0;
-                }
-
-                //-------HERE BEGINS ALL PRESETS THAT SET UP ONCE WHEN ENTERING A NEW PRESET------
-
-                switch (switchPreset)
-                {
-                case 0: //LOAD PRESET 1
-                    switchMode[5][2] = 1;
-                    switchMode[6][1] = 1;
-                    bitePoint = 265;
-                    brakeMagicValue = 200;
-                    break;
-                case 1: //LOAD PRESET 2
-                    bitePoint = 300;
-                    break;
-                case 2: //LOAD PRESET 3
-                    bitePoint = 500;
-                    break;
-                case 3: //LOAD PRESET 4
-                    bitePoint = 200;
-                    switchMode[4][2] = 1;
-                    break;
-                case 4: //LOAD PRESET 5
-                    break;
-                case 5: //LOAD PRESET 6
-                    break;
-                case 6: //LOAD PRESET 7
-                    break;
-                case 7: //LOAD PRESET 8
-                    break;
-                case 8: //LOAD PRESET 9
-                    break;
-                case 9: //LOAD PRESET 10
-                    break;
-                case 10: //LOAD PRESET 11
-                    break;
-                case 11: //LOAD PRESET 12
-                    break;
-                }
+                //Set new preset
+                presets(switchPreset);
             }
         }
     }

@@ -23,18 +23,6 @@ const uint8_t buttonNumber[rowCount][colCount] =
   {22, 37, 36 ,67 , 0, 0, 0}    //ROW 7
 };
 
-
-bool switchMode[rowCount][colCount] = //Boot preset - - should match preset 1
-{
-  {0, 0, 0, 0, 0, 0, 0}, //ROW 1
-  {0, 0, 0, 0, 0, 0, 0}, //ROW 2
-  {0, 0, 0, 0, 0, 0, 0}, //ROW 3
-  {0, 0, 0, 0, 0, 0, 0}, //ROW 4
-  {0, 0, 0, 0, 0, 0, 0}, //ROW 5
-  {0, 0, 1, 0, 0, 0, 0}, //ROW 6
-  {0, 1, 0, 0, 0, 0, 0}  //ROW 7
-};
-
 //---------------------------------------
 //--------ANALOG DESCRIPTION-------------
 //---------------------------------------
@@ -44,7 +32,4 @@ const uint8_t analogButtonNumber[4] =         //ANALOG BUTTONS 1
 
 const uint8_t analogButtonNumberIncMode[4] =  //ANALOG BUTTONS 2
 { 69, 81, 0, 0 };
-
-int8_t analogSwitchMode1[4] = { 0, 0, 0, 0 }; //BOOT PRESET - - should match preset 1
-int8_t analogSwitchMode2[4] = { 0, 0, 0, 0 };
 
