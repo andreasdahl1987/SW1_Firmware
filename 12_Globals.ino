@@ -8,8 +8,9 @@ bool handbrakeLock = false;
 bool handbrakeRelease = false;
 long handbrakeTimer = 0;
 
+bool brakeMagicOn;
 float brakeMagicValue; 
-float throttleHold; 
+float throttleHoldValue; 
 float bitePoint;
 uint8_t leftQuickValue;
 uint8_t rightQuickValue;

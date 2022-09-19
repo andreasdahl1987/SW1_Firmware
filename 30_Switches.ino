@@ -39,7 +39,6 @@ void loop()
 
     pushPull(3, 3, 3, 4, 6, 6, 6, 5, 7);
 
-    toggleM(3, 5, 5);
     toggleM(6, 3, 6);
     brakeMagic(7, 2, 4);
 
@@ -50,6 +49,8 @@ void loop()
     biteButton(1, 5);
     presetButton(1, 6);
     quickSwitch(1, 4);
+    throttleHold(3, 5, 7, 4, true);
+
 
 
     //ENCODERS
@@ -60,7 +61,6 @@ void loop()
     rotary2Inc(3, 6, true);
     rotary2Inc(6, 1, false);
 
-    rotary2Inc(7, 4, true);
 
     //FUNKY SWITCHES
     funkyButtonDDButton(5, 4, 5, 1, 6, 7);
@@ -107,6 +107,8 @@ void loop()
         true);                                                        //True = Master/Slave paddle is Throttle/Brake in mode 4. False is opposite.
 
    
+
+
     //Push the preset number
     long push = 0;
     push = push | (switchPreset << 10);

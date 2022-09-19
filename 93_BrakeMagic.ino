@@ -37,9 +37,20 @@ void brakeMagic(int row, int column, int fieldPlacement)
     push = push << (FieldPlacement - 1);
     buttonField = buttonField | push;
 
+    brakeMagicOn = false;
+
     //SWITCH MODE 1: Brake magic
     if (!switchMode[Row][Column])
     {
+        if (pushState[Row][Column] == 1)
+        {
+            brakeMagicOn = true;
+        }
+        else
+        {
+            brakeMagicOn = false;
+        }
+
         if (pushState[Row][Column] == 1 && !latchState[Row][Column])
         {
             latchLock[Row][Column] = true;

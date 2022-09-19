@@ -115,5 +115,6 @@ typedef void *__builtin_va_list;
 #include "73_FunkyDDS.ino"
 #include "91_DualClutch.ino"
 #include "93_BrakeMagic.ino"
+#include "94_ThrottleHold.ino"
 #endif
 #endif

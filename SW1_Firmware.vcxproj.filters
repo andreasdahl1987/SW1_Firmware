@@ -38,6 +38,7 @@
     <None Include="66_BitePointRotary.ino" />
     <None Include="41_Presets.ino" />
     <None Include="55_QuickSwitch.ino" />
+    <None Include="94_ThrottleHold.ino" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="__vm\.SW1_Firmware.vsarduino.h">
