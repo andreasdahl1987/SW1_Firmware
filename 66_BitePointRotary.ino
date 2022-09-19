@@ -95,7 +95,6 @@ void rotaryLeft(int analogPin, int switchNumber, int fieldPlacement, int pos1, i
             //Give new value to pushState
             analogLastCounter[N] = result;
 
-
             if (biteButtonBit1 || biteButtonBit2) //Bite point setting
             {
                 //Adjusting bite up/down
@@ -143,9 +142,15 @@ void rotaryLeft(int analogPin, int switchNumber, int fieldPlacement, int pos1, i
     {
         analogTempState[N] = 0; //Refreshing encoder mode difference
 
+        uint8_t value = analogLastCounter[N];
+        if (quickSwitchState)
+        {
+            value = leftQuickValue;
+        }
+
         for (int i = 0; i < 12; i++)
         {
-            if (i == analogLastCounter[N])
+            if (i == value)
             {
                 Joystick.pressButton(i + Number);
             }

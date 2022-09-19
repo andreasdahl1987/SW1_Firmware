@@ -22,7 +22,6 @@ void loop()
   //WHEEL BUTTONS
 
     pushButton(1, 3);
-    pushButton(1, 4);
 
     pushButton(3, 1);
     pushButton(3, 2);
@@ -50,6 +49,7 @@ void loop()
     neutralButton(4, 5);
     biteButton(1, 5);
     presetButton(1, 6);
+    quickSwitch(1, 4);
 
 
     //ENCODERS
@@ -106,7 +106,7 @@ void loop()
         882,                                                          //Fully pressed value (Slave)
         true);                                                        //True = Master/Slave paddle is Throttle/Brake in mode 4. False is opposite.
 
-    
+   
     //Push the preset number
     long push = 0;
     push = push | (switchPreset << 10);
@@ -117,4 +117,6 @@ void loop()
 
     Joystick.sendState();
 
+    Serial.println(buttonField);
+    Serial.println(quickSwitchState);
 }

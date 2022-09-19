@@ -105,6 +105,7 @@ typedef void *__builtin_va_list;
 #include "51_Toggle.ino"
 #include "52_FunctionButtons.ino"
 #include "54_PushPull.ino"
+#include "55_QuickSwitch.ino"
 #include "62_Rotary2Bit.ino"
 #include "66_BitePointRotary.ino"
 #include "67_PresetRotary.ino"

@@ -88,7 +88,8 @@ void rotaryRight(int analogPin, int switchNumber, int fieldPlacement, int pos1, 
             analogTempState[N] = result - analogLastCounter[N];
 
             //Give new value to pushState
-            analogLastCounter[N] = result;
+
+             analogLastCounter[N] = result;
 
             if (pushState[presetButtonRow - 1][presetButtonCol - 1] == 1) //Standard
             {
@@ -107,9 +108,15 @@ void rotaryRight(int analogPin, int switchNumber, int fieldPlacement, int pos1, 
     {
         analogTempState[N] = 0; //Refreshing encoder mode difference
 
+        uint8_t value = analogLastCounter[N];
+        if (quickSwitchState)
+        {
+            value = rightQuickValue;
+        }
+
         for (int i = 0; i < 12; i++)
         {
-            if (i == analogLastCounter[N])
+            if (i == value)
             {
                 Joystick.pressButton(i + Number);
             }

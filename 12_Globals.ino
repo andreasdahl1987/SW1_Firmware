@@ -8,8 +8,12 @@ bool handbrakeLock = false;
 bool handbrakeRelease = false;
 long handbrakeTimer = 0;
 
-//Brake magic
-float brakeMagicValue = 50; //Default brake magic value
+float brakeMagicValue; 
+float throttleHold; 
+float bitePoint;
+uint8_t leftQuickValue;
+uint8_t rightQuickValue;
+bool quickSwitchState;
 
 //Function buttons
 int8_t hybridButtonRow;
@@ -49,7 +53,5 @@ unsigned long globalClock;
 #define funkyPulse 60
 #define funkyCooldown 70
 
-//--------------------------------
-//----DEFAULT BITE POINT----------
-float bitePoint = 400;
-//--------------------------------
+
+

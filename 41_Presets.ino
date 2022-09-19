@@ -22,6 +22,14 @@ void presets(int8_t presetNumber)
         analogSwitchMode2[i] = 0;
     }
 
+    //Default values set
+
+    bitePoint = 300;
+    brakeMagicValue = 50;
+    throttleHold = 1000;
+    leftQuickValue = 11;
+    rightQuickValue = 11;
+
     //----------------------------------------
     //-----BUILD YOUR PRESETS HERE------------
     //----------------------------------------
