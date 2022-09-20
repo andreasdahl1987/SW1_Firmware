@@ -159,4 +159,9 @@ void pushPull(int rightPullRow, int rightPullCol, int rightPushRow, int rightPus
         handbrake = false;
         handbrakeRelease = false;
     }
+
+    //Push handbrake
+    long pesh = 0;
+    pesh = pesh | handbrake;
+    encoderField = encoderField | pesh;
 }

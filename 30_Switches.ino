@@ -44,14 +44,12 @@ void loop()
 
     //SPECIALS
 
-    modButton(1, 3);
+    modButton(1, 7);
     neutralButton(4, 5);
     biteButton(1, 5);
     presetButton(1, 6);
     quickSwitch(1, 4);
     throttleHold(3, 5, 7, 4, true);
-
-
 
     //ENCODERS
 
@@ -107,12 +105,6 @@ void loop()
         true);                                                        //True = Master/Slave paddle is Throttle/Brake in mode 4. False is opposite.
 
    
-
-
-    //Push the preset number
-    long push = 0;
-    push = push | (switchPreset << 10);
-    buttonField = buttonField | push;
 
     Joystick.setZAxis(encoderField - 32767);
     Joystick.setYAxis(buttonField - 32767);

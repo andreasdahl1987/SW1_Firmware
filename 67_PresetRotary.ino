@@ -157,10 +157,16 @@ void rotaryRight(int analogPin, int switchNumber, int fieldPlacement, int pos1, 
         }
     }
 
+    //Push the switch mode
     long push = 0;
     push = push | analogSwitchMode1[N];
     push = push << (FieldPlacement - 1);
     buttonField = buttonField | push;
+
+    //Push the preset number
+    long pesh = 0;
+    pesh = pesh | (switchPreset << 10);
+    buttonField = buttonField | pesh;
 
 
 }

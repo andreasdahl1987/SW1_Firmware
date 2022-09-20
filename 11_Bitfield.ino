@@ -18,8 +18,8 @@ int encoderField = 0;
  5
  4
  3
- 2
- 1
+ 2 - Quick switch mode
+ 1 - Handbrake active
  Least significant
 
  */
