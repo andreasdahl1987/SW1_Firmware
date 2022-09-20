@@ -116,5 +116,6 @@ typedef void *__builtin_va_list;
 #include "91_DualClutch.ino"
 #include "93_BrakeMagic.ino"
 #include "94_ThrottleHold.ino"
+#include "99_PresetSwitch.ino"
 #endif
 #endif
