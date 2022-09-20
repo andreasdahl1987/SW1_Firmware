@@ -1,4 +1,4 @@
-void throttleHold(int8_t buttonRow, int8_t buttonCol, int8_t rotaryRow, int8_t rotaryCol,bool reverse)
+void throttleHold(int8_t buttonRow, int8_t buttonCol, int8_t rotaryRow, int8_t rotaryCol, bool reverse)
 {
     int8_t ButtonRow = buttonRow-1;
     int8_t ButtonCol = buttonCol-1;
@@ -126,4 +126,8 @@ void throttleHold(int8_t buttonRow, int8_t buttonCol, int8_t rotaryRow, int8_t r
     {
         Joystick.setThrottle(0);
     }
+
+    long push = pushState[ButtonRow][ButtonCol];
+    push = push << 8;
+    buttonField = buttonField | push;
 }
