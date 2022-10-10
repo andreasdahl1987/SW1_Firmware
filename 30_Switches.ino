@@ -21,8 +21,6 @@ void loop()
 
   //WHEEL BUTTONS
 
-    pushButton(1, 3);
-
     pushButton(3, 1);
     pushButton(3, 2);
 
@@ -39,6 +37,7 @@ void loop()
 
     pushPull(3, 3, 3, 4, 6, 6, 6, 5, 7);
 
+    toggle(3, 5);
     toggleM(6, 3, 6);
     brakeMagic(7, 2, 4);
 
@@ -49,7 +48,7 @@ void loop()
     biteButton(1, 5);
     presetButton(1, 6);
     quickSwitch(1, 4);
-    throttleHold(3, 5, 7, 4, true);
+    throttleHoldM(1, 3, 7, 4, true);
 
     //ENCODERS
 
@@ -104,10 +103,12 @@ void loop()
         882,                                                          //Fully pressed value (Slave)
         true);                                                        //True = Master/Slave paddle is Throttle/Brake in mode 4. False is opposite.
 
-   
 
-    Joystick.setZAxis(encoderField - 32768);
-    Joystick.setYAxis(buttonField - 32768);
+    Joystick.setZAxis(encoderField - 32767);
+    Joystick.setYAxis(buttonField - 32767);
+
+   
+    
 
     Joystick.sendState();
 }

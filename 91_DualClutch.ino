@@ -245,7 +245,7 @@ void dualClutch(int masterPin, int masterSwitchNumber, int masterReleasedValue, 
     }
 
 
-    long push = 0;
+    int32_t push = 0;
     push = push | analogSwitchMode1[M];
     push = push | (analogSwitchMode2[M] << 1);
     push = push << (2 * (FieldPlacement - 1));

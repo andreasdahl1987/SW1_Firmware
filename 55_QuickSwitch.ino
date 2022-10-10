@@ -31,7 +31,7 @@ void quickSwitch(int8_t row, int8_t column)
     }
 
     //Push switch mode
-    long pesh = 0;
+    int32_t pesh = 0;
     pesh = pesh | switchMode[Row][Column];
     pesh = pesh << 1;
     encoderField = encoderField | pesh;
@@ -60,8 +60,8 @@ void quickSwitch(int8_t row, int8_t column)
     }
 
     //Push switch active
-    long push = 0;
+    int32_t push = 0;
     push = push | quickSwitchState;
-    push = push << 7;
-    buttonField = buttonField | push;
+    push = push << 14;
+    encoderField = encoderField | push;
 }

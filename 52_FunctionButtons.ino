@@ -123,7 +123,7 @@ void neutralButton(int row, int column)
     int Column = column - 1;
     int Number = buttonNumber[Row][Column];
     int FieldPlacement = 15;
-    int ActivePlacement = 16;
+    int ActivePlacement = 8;
 
     if (pushState[Row][Column] != rawState[Row][Column] && (globalClock - switchTimer[Row][Column]) > buttonCooldown)
     {
@@ -232,7 +232,7 @@ void biteButton(int row, int column)
         }
     }
     //Push bite setting level
-    long push = 0;
+    int32_t push = 0;
     push = push | biteButtonBit1;
     push = push | (biteButtonBit2 << 1);
     push = push << (2 * (FieldPlacement - 1));
