@@ -30,14 +30,14 @@ void loop()
     pushButton(4, 7);
 
     pushButton(6, 4);
-    pushButton(6, 7);
+    pushButtonM(6, 7, 1);
 
     pushButton(7, 1);
     pushButton(7, 3);
 
     pushPull(3, 3, 3, 4, 6, 6, 6, 5, 7);
 
-    toggle(3, 5);
+    toggleM(3, 5, 5);
     toggleM(6, 3, 6);
     brakeMagic(7, 2, 4);
 
