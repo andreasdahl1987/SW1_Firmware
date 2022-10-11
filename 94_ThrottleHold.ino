@@ -271,6 +271,6 @@ void throttleHoldM(int8_t buttonRow, int8_t buttonCol, int8_t rotaryRow, int8_t 
     }
 
     long push = latchState[ButtonRow][ButtonCol];
-    push = push << 5;
+    push = push << 8;
     buttonField = buttonField | push;
 }
