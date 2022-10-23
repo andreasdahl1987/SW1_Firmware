@@ -28,8 +28,8 @@ const uint8_t buttonNumber[rowCount][colCount] =
 //---------------------------------------
 
 const uint8_t analogButtonNumber[4] =         //ANALOG BUTTONS 1
-{ 69, 81, 0, 0 };
+{ 69, 83, 0, 0 };
 
 const uint8_t analogButtonNumberIncMode[4] =  //ANALOG BUTTONS 2
-{ 69, 81, 0, 0 };
+{ 81, 95, 0, 0 };
 

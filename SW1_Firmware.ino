@@ -1,7 +1,7 @@
 #include <Joystick.h>
 
 
-#define BUTTONCOUNT 93
+#define BUTTONCOUNT 97
 //Defining joystick parameters
 
 Joystick_ Joystick(JOYSTICK_DEFAULT_REPORT_ID, JOYSTICK_TYPE_JOYSTICK,
