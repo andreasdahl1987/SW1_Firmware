@@ -112,6 +112,7 @@ typedef void *__builtin_va_list;
 #include "70_FunkyPush.ino"
 #include "71_FunkyRotary.ino"
 #include "72_FunkyButton.ino"
+#include "72_FunkyHat.ino"
 #include "73_FunkyDDS.ino"
 #include "91_DualClutch.ino"
 #include "93_BrakeMagic.ino"
