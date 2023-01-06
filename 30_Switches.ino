@@ -32,7 +32,7 @@ void loop()
     pushButton(6, 4);
     pushButtonM(6, 7, 1);
 
-    pushButton(7, 1);
+    launchButton(7, 1, 3); //Lower right side button (LIM) is launch
     pushButton(7, 3);
 
     pushPull(3, 3, 3, 4, 6, 6, 6, 5, 7);
@@ -92,15 +92,19 @@ void loop()
         16, 107, 200, 291, 383, 474, 566, 657, 749, 841, 932, 1023,   //Switch position values
         false);                                                        //Rotation direction
 
-    dualClutch(
+    filteredDualClutch(
         A2,                                                           //Analog pin to read (Master)
         3,                                                            //Analog switch # (Master)
         571,                                                          //Released value (Master
-        169,                                                          //Fully pressed value (Master)
+        173,                                                          //Fully pressed value (Master)
+        -1,                                                           //Curve push (Master)
+        1,                                                            //Exponential factor (Master
         A5,                                                           //Analog pin to read (Slave)
         4,                                                            //Analog switch # (Slave)
         527,                                                          //Released value (Slave)
-        882,                                                          //Fully pressed value (Slave)
+        878,                                                          //Fully pressed value (Slave)
+        -1,                                                           //Curve push (Slave)
+        0.7,                                                          //Exponential factor (Salve)
         true);                                                        //True = Master/Slave paddle is Throttle/Brake in mode 4. False is opposite.
 
 

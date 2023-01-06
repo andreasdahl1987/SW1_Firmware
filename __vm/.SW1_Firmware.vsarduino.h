@@ -99,6 +99,7 @@ typedef void *__builtin_va_list;
 #include "13_Switch_variables.ino"
 #include "20_Setup.ino"
 #include "30_Switches.ino"
+#include "39_Calculations.ino"
 #include "40_Matrix.ino"
 #include "41_Presets.ino"
 #include "50_Pushbuttons.ino"

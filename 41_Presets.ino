@@ -30,6 +30,9 @@ void presets(int8_t presetNumber)
     leftQuickValue = 11;
     rightQuickValue = 11;
 
+    //Default to clutch mode 3
+    analogSwitchMode2[2] = 1;
+
     //----------------------------------------
     //-----BUILD YOUR PRESETS HERE------------
     //----------------------------------------
