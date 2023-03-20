@@ -20,6 +20,7 @@ void loop()
     //-------------------------
 
   //WHEEL BUTTONS
+    pushButton(1,3);
 
     pushButton(3, 1);
     pushButton(3, 2);
@@ -48,7 +49,7 @@ void loop()
     biteButton(1, 5);
     presetButton(1, 6);
     quickSwitch(1, 4);
-    throttleHoldM(1, 3, 7, 4, true);
+    throttleHoldSW1(7,6,7,4,5, true);
 
     //ENCODERS
 
